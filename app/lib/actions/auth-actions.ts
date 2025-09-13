@@ -1,4 +1,42 @@
 'use server';
+/**
+ * Authentication Actions Module
+ * 
+ * This module provides server-side authentication functions for the application,
+ * handling user login, registration, logout and session management through Supabase.
+ * 
+ * Key Features:
+ * - Server-side validation for security
+ * - Error handling and sanitization
+ * - Type-safe authentication operations
+ * 
+ * Architecture Context:
+ * - Acts as a bridge between frontend forms and Supabase authentication
+ * - Used by auth-related components and pages
+ * - Implements server actions pattern for Next.js
+ * 
+ * Security Considerations:
+ * - All functions run server-side to prevent credential exposure
+ * - Error messages are sanitized to avoid information leakage
+ * - Input validation prevents malformed data from reaching Supabase
+ * 
+ * Dependencies:
+ * - Requires Supabase client configuration
+ * - Expects properly typed form data (LoginFormData, RegisterFormData)
+ * 
+ * Common Usage:
+ * - Called from login/register forms
+ * - Used in protected route handlers
+ * - Integrated with authentication UI components
+ * 
+ * Edge Cases Handled:
+ * - Network failures
+ * - Invalid credentials
+ * - Malformed input data
+ * - Session expiration
+ * - Concurrent authentication attempts
+ */
+
 
 import { createClient } from '@/lib/supabase/server';
 import { LoginFormData, RegisterFormData } from '../types';

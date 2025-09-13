@@ -7,6 +7,40 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { register } from '@/app/lib/actions/auth-actions';
+/**
+ * RegisterPage Component
+ * 
+ * A client-side registration form component that handles new user sign-ups.
+ * 
+ * Purpose:
+ * - Provides the entry point for new users to create accounts in the polling application
+ * - Validates and processes user registration data before sending to the backend
+ * - Manages registration state and error handling
+ * 
+ * Key Features:
+ * - Form validation for name, email, and matching passwords
+ * - Real-time error feedback to users
+ * - Loading state management during registration
+ * - Automatic redirect to polls page on successful registration
+ * 
+ * Integration Points:
+ * - Uses the register() action from auth-actions for backend communication
+ * - Connects with the authentication system for session management
+ * - Redirects to /polls route after successful registration
+ * 
+ * Assumptions:
+ * - User has JavaScript enabled
+ * - Backend API is available and responsive
+ * - Registration success creates a valid session
+ * 
+ * Edge Cases Handled:
+ * - Network errors during registration
+ * - Invalid form data submission
+ * - Server-side validation failures
+ * - Concurrent registration attempts
+ * 
+ * @returns {JSX.Element} A responsive registration form interface
+ */
 
 export default function RegisterPage() {
   const [error, setError] = useState<string | null>(null);

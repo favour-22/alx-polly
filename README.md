@@ -1,14 +1,88 @@
-# ALX Polly - Secure Polling Application
+"""
+README for ALX Polly: Secure Polling Application
 
-This document provides an overview of the ALX Polly application, with a special focus on the security vulnerabilities that were identified and the remediation steps taken to secure the platform.
+This README serves as both a technical and security-focused guide for the ALX Polly project. It explains not just what the application does, but why robust security practices are essential for any user-driven web platform. ALX Polly demonstrates how to build a modern polling app with Next.js and Supabase, while also highlighting the importance of server-side validation, secure authentication, and proper session management. This documentation will help developers understand the architecture, setup, and secure operation of the app, and provides clear steps for running and testing the application locally.
+"""
+
+# ALX Polly - Secure Polling Application
 
 ## Project Overview
 
-ALX Polly is a full-stack web application built with Next.js, Supabase, and Tailwind CSS. It allows users to register, create polls, and share them for voting. The project prioritizes security and follows modern web development best practices.
+ALX Polly is a full-stack web application that allows users to register, create polls, and share them for voting. The app is built with:
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Backend & Auth:** Supabase
+- **Styling:** Tailwind CSS with shadcn/ui components
+
+The project is designed to demonstrate secure, modern web development practices, with a focus on protecting user data and business logic from common vulnerabilities.
+
+## Why This README Is Needed
+
+This README is essential for:
+- **Developers:** To understand the secure architecture and how to extend or maintain the app.
+- **Auditors:** To review the security posture and see how vulnerabilities were identified and remediated.
+- **Contributors:** To quickly get started with setup, configuration, and testing.
+
+## How the Application Works
+
+- **User Registration & Login:** Users can sign up and log in securely. All validation is performed on the server to prevent bypasses.
+- **Poll Creation:** Authenticated users can create polls with multiple options.
+- **Voting:** Users can vote on polls. Votes are securely recorded and results are updated in real time.
+- **Dashboard:** Each user has a dashboard to manage their polls and view results.
+
+## Setup Steps
+
+### 1. Clone the Repository
+```bash
+git clone <repository-url>
+cd alx-polly
+```
+
+### 2. Install Dependencies
+```bash
+npm install
+```
+
+### 3. Supabase Configuration
+- Create a [Supabase](https://supabase.io/) project.
+- In the Supabase dashboard, enable **Email Auth** (and disable email confirmation for local testing, or set up SMTP for production).
+- Copy your Supabase **Project URL** and **anon public key** from the API settings.
+
+### 4. Environment Variables
+Create a `.env.local` file in the project root:
+```
+NEXT_PUBLIC_SUPABASE_URL=<your-supabase-url>
+NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-supabase-anon-key>
+```
+
+### 5. Run the Application Locally
+```bash
+npm run dev
+```
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Usage Examples
+
+### Registering and Logging In
+- Go to `/register` to create a new account.
+- After registering, log in at `/login`.
+
+### Creating a Poll
+- Once logged in, navigate to the dashboard and click "Create Poll".
+- Enter a poll title, description, and options, then submit.
+
+### Voting on a Poll
+- Share the poll link or QR code with others.
+- Users can vote on any active poll and see real-time results.
+
+## How to Test the App
+- **Manual Testing:** Register, log in, create polls, and vote to verify all flows work securely.
+- **Security Testing:** Try to bypass validation by submitting requests directly to the server (e.g., with Postman). All validation should be enforced server-side.
+- **Session Testing:** Log in and out, and verify that protected routes are inaccessible when not authenticated.
 
 ## Security Vulnerabilities and Remediation
 
-A security audit of the application revealed critical vulnerabilities in the authentication system. These have been fully remediated. Below is a summary of the findings and the fixes that were implemented.
+A security audit revealed and fixed several critical vulnerabilities. See the detailed sections below for what was found and how it was fixed.
 
 ---
 
